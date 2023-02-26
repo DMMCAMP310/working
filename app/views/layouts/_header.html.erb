@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <% if user_signed_in? %>
-        <a class="col navbar-brand" href="/users"><span>Working</span></a>
+        <a class="col navbar-brand" href="/users/mypage"><span>Working</span></a>
       <% else %>
         <a class="col navbar-brand" href="/"><span>Working</span></a>
       <% end %>
@@ -15,13 +15,8 @@
       <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
         <li class="mx-2">
-          <%= link_to user_path(current_user.id),class: 'nav-link text-dark border rounded rounded-3 bg-white' do %>
+          <%= link_to mypage_users_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' do %>
             <i class="fas fa-user"></i>マイページ
-          <% end %>
-        </li>
-        <li class="mx-2">
-          <%= link_to users_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' do %>
-            <i class="fas fa-users"></i>会員一覧
           <% end %>
         </li>
         <li class="mx-2">
