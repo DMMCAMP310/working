@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_23_151401) do
+ActiveRecord::Schema.define(version: 2023_02_27_133504) do
+
+  create_table "timelogs", force: :cascade do |t|
+    t.integer "time", null: false
+    t.string "action", null: false
+    t.integer "effect", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

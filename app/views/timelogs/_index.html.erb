@@ -1,0 +1,12 @@
+<table class="table">
+  <tbody>
+    <% timelogs.each do |timelog| %>
+      <tr>
+        <td colspan="13", style="overflow-x: auto; border:none;"><%= timelog.time  %></td>
+        <td colspan="13", style="overflow-x: auto; border:none;"><%= timelog.action %></td>
+        <td colspan="13", style="overflow-x: auto; border:none;"><%= timelog.effect %></td>
+        <td colspan="2", style="border:none;"><%= link_to '編集', edit_timelog_path(cause.id), class: "btn btn-success btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

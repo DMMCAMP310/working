@@ -1,0 +1,6 @@
+<%= form_with model: timelog do |f| %>
+  <%#= f.select :time %>
+  <%= f.text_field :action, :size=>"80" %>
+  <%#= f.select :effect %>
+  <%= f.submit class: 'btn btn-secondary' %>
+<% end %>

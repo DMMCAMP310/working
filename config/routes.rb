@@ -10,4 +10,6 @@ Rails.application.routes.draw do
       put "mypage", :to => "users#update"
     end
   end
+  
+  resources :timelogs, only: [:index, :create, :edit, :update]
 end
