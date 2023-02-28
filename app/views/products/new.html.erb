@@ -1,0 +1,10 @@
+<h1>Products#new</h1>
+<%= form_with model: @product do |f| %>
+   <%= f.text_field :name %>
+   <%= f.text_area :description %>
+   <%= f.number_field :price %>
+   <%= f.collection_select(:category_id, @categories, :id, :name) %>
+   <%= f.submit "Create" %>
+ <% end %>
+ 
+ <%= link_to "Back", products_path %>
