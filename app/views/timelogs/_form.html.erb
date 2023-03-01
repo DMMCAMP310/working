@@ -1,6 +1,6 @@
 <%= form_with model: timelog do |f| %>
-  <%= f.select :time, {'10': 0, '30': 1, '60':2, '90':3}, { include_blank: '選択してください'} %>
+  <%= f.select :time, {'10': 0, '30': 1, '60': 2, '90': 3}, { include_blank: '選択してください'} %>
   <%= f.text_field :action, :size=>"80" %>
-  <%= f.select :effect, {'A': 0, 'B': 1, 'C':2}, { include_blank: '選択してください'} %>
+  <%= f.select :effect, {'A': 0, 'B': 1, 'C': 2}, { include_blank: '選択してください'} %>
   <%= f.submit class: 'btn btn-secondary' %>
 <% end %>

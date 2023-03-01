@@ -33,6 +33,8 @@ class TimelogsController < ApplicationController
   private
 
   def timelog_params
+    params[:timelog][:time] = params[:timelog][:time].to_i
+    params[:timelog][:effect] = params[:timelog][:effect].to_i
     params.require(:timelog).permit(:time, :action, :effect)
   end
   
