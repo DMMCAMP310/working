@@ -24,6 +24,14 @@
             <i class="fas fa-sign-out-alt"></i>ログアウト
           <% end %>
         </li>
+        <form class="form-inline">
+          <div class="form-group">
+            <input class="form-control samuraimart-header-search-input">
+          </div>
+          <div class="input-group">
+            <button type="submit" class="btn samuraimart-header-search-button"><i class="fas fa-search samuraimart-header-search-icon"></i></button>
+          </div>
+        </form>
       <% else %>
         <li class="text-center mx-2">
           <%= link_to "新規登録", new_user_registration_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>

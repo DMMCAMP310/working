@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   end
   
   resources :timelogs, only: [:index, :create, :edit, :update]
-  resources :products
+  resources :products do
+    resources :reviews, only: [:create]
+  end
 end

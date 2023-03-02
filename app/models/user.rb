@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
          has_many :timelogs, dependent: :destroy
+         has_many :reviews
          has_one_attached :profile_image
          
         def get_profile_image
