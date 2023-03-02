@@ -1,6 +1,59 @@
-<h1>Products#show</h1>
-<%= @product.name %>
- <%= @product.description %>
- <%= @product.price %>
- 
- <%= link_to "Back", products_path %>
+<div class="d-flex justify-content-center">
+  <div class="row w-75">
+    <div class="col-5 offset-1">
+      <%= image_tag "/images/dummy.png", class: "w-100 img-fuild" %>
+    </div>
+
+    <div class="col">
+      <div class="d-flex flex-column">
+        <h1 class="">
+          <%= @product.name %>
+        </h1>
+        <p class="">
+          <%= @product.description %>
+        </p>
+        <hr>
+        <p class="d-flex align-items-end">
+          ￥<%= @product.price %>（税込）
+        </p>
+        <hr>
+      </div>
+
+      <% if user_signed_in? %>
+        <%= form_with model: @product do |f| %>
+          <%= f.hidden_field :id, value: @product.id %>
+          <%= f.hidden_field :name, value: @product.name %>
+          <%= f.hidden_field :price, value: @product.price %>
+          <div class="form-group row">
+            <%= f.label "数量", class: "col-sm-2 col-form-label" %>
+            <div class="col-sm-10">
+              <%= f.number_field :quantity, min:1, value:1, class: "form-control w-25"%>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-7">
+              <%= f.submit "カートに追加", class: "btn samuraimart-submit-button w-100" do %>
+                <i class="fas fa-shopping-cart"></i>
+              <% end %>
+            </div>
+            <div class="col-5">
+              <%= link_to "#", class: "btn samuraimart-favorite-button text-dark w-100" do %>
+                <i class="fa fa-heart"></i>お気に入り
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+
+    <div class="offset-1 col-11">
+      <hr class="w-100">
+      <h3 class="float-left">カスタマーレビュー</h3>
+    </div>
+
+    <div class="offset-1 col-10">
+      <!-- レビューを実装する箇所になります -->
+    </div>
+  </div>
+</div>
