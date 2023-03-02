@@ -37,8 +37,8 @@
               <% end %>
             </div>
             <div class="col-5">
-              <%= link_to "#", class: "btn samuraimart-favorite-button text-dark w-100" do %>
-                <i class="fa fa-heart"></i>お気に入り
+              <%= link_to favorite_product_path, class: "btn working-favorite-button text-favorite w-100" do %>
+                <i class="fa fa-heart"></i><%= current_user.likes?(@product) ? "お気に入り解除" : "お気に入り" %>
               <% end %>
             </div>
           </div>

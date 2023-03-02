@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   
   resources :timelogs, only: [:index, :create, :edit, :update]
   resources :products do
+    member do
+      get :favorite
+    end
     resources :reviews, only: [:create]
   end
 end
