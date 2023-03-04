@@ -1,0 +1,12 @@
+<div class="container">
+  <% major_category_names.each do |major_category_name| %>
+    <h2><%= major_category_name %></h2>
+    <% categories.each do |category| %>
+      <% if category.major_category_name == major_category_name %>
+        <label class="sidebar-category-label">
+          <%= link_to category.name, products_path(category: category.id) %>
+        </label>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
