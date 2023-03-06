@@ -12,4 +12,15 @@ class User < ApplicationRecord
         def get_profile_image
           (profile_image.attached?) ? profile_image : 'no_image.jpg'
         end
+        
+        def update_password(params, *options)
+          if params[:password].blank?
+            params.delete(:password)
+            params.delete(:password_confirmation) if params[:password_confirmation].blank?
+          end
+       
+          result = update(params, *options)
+          clean_up_passwords
+          result
+        end
 end

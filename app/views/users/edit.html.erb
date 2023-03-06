@@ -2,106 +2,74 @@
   <div class="row justify-content-center">
     <div class="col-md-5">
       <span>
-        <%= link_to "マイページ", mypage_users_path %> > 会員情報の編集
+        <%= link_to "マイページ", mypage_users_path  %> >
       </span>
+      <h3 class="mt-3 mb-3">ユーザー情報変更</h3>
 
-      <h1 class="mt-3 mb-3">会員情報の編集</h1>
+        <hr>
 
-      <hr>
+        <%= form_with model: @user, url: mypage_users_path, local: true, method: :put do |f| %>
+        <div class="form-group row">
 
-      <%= form_with url: mypage_users_path, local: true, method: :put do |f| %>
-      
-        
-        <div class="form-group">
-          <div class="d-flex justify-content-between">
-            <%= f.label :name, "氏名", class: "text-md-left samuraimart-edit-user-info-label" %>
-            <span onclick="switchEditUserInfo('.userName', '.editUserName', '.userNameEditLabel');" class="userNameEditLabel user-edit-label">
-              編集
+          <%= f.label :name, "", class: "col-md-5 col-form-label text-md-left" do %>
+            氏名
+            <span class="ml-1 samuraimart-require-input-label">
+              <span class="samuraimart-require-input-label-text">必須</span>
             </span>
-          </div>
-          <div class="collapse show userName">
-            <h1 class="samuraimart-edit-user-info-value"><%= @user.name %></h1>
-          </div>
-          <div class="collapse editUserName">
+          <% end %>
+
+          <div class="col-md-7">
             <%=
               f.text_field :name,
-              class: "form-control #{"is-invalid" if @user.errors.messages[:name].present? } ",
-              value: @user.name,
+              class: "form-control #{"is-invalid" if @user.errors.messages[:name].present? } samuraimart-login-input",
               autofocus: "true",
               required: "",
               autocomplete: "name",
-              placeholder: "名前を入力"
+              placeholder: "侍 太郎"
             %>
-
-            <%= f.submit "保存", class: "btn samuraimart-submit-button mt-3 w-25" %>
 
             <% if @user.errors.messages[:name].present? %>
-            <span class="invalid-feedback" role="alert">
-              <strong>氏名を入力してください</strong>
-            </span>
+              <span class="samuraimart-error-message">
+                <strong><%= @user.errors.full_messages_for(:name).first %></strong>
+              </span>
             <% end %>
           </div>
         </div>
-
-        <hr>
-
-        <div class="form-group">
-          <div class="d-flex justify-content-between">
-            <%= f.label :email, "メールアドレス", class: "text-md-left samuraimart-edit-user-info-label" %>
-            <span onclick="switchEditUserInfo('.userMail', '.editUserMail', '.userMailEditLabel');" class="userMailEditLabel user-edit-label">
-              編集
+        
+        <div class="form-group row">
+          <%= f.label :email, "", class: "col-md-5 col-form-label text-md-left" do %>
+          メールアドレス
+            <span class="ml-1 samuraimart-require-input-label">
+              <span class="samuraimart-require-input-label-text">必須</span>
             </span>
-          </div>
-          <div class="collapse show userMail">
-            <h1 class="samuraimart-edit-user-info-value"><%= @user.email %></h1>
-          </div>
-          <div class="collapse editUserMail">
+          <% end %>
+
+          <div class="col-md-7">
             <%=
               f.email_field :email,
-              class: "form-control #{"is-invalid" if @user.errors.messages[:email].present? }",
+              class: "form-control #{"is-invalid" if @user.errors.messages[:email].present? } samuraimart-login-input",
               autofocus: "true",
               required: "",
-              value: @user.email,
               autocomplete: "email",
-              placeholder: "メールアドレスを入力"
+              placeholder: "メールアドレス"
             %>
 
-            <%= f.submit "保存", class: "btn samuraimart-submit-button mt-3 w-25" %>
-
             <% if @user.errors.messages[:email].present? %>
-            <span class="invalid-feedback" role="alert">
-              <strong>メールアドレスを入力してください</strong>
-            </span>
+              <span class="samuraimart-error-message">
+                <strong><%= @user.errors.full_messages_for(:email).first %></strong>
+              </span>
             <% end %>
           </div>
         </div>
 
         <hr>
 
-        <div class="form-group">
-
-          <%= f.submit "保存", class: "btn samuraimart-submit-button mt-3 w-25" %>
-
+        <div class="form-group d-flex justify-content-end">
+          <%= f.submit "保存する", class: "btn samuraimart-submit-button w-25" %>
         </div>
-      </div>
-
-      <hr>
-
-      <% end %>
+      </form>
     </div>
   </div>
+<% end %>
 </div>
 
-<script type="text/javascript">
-    let switchEditUserInfo = (textClass, inputClass, labelClass) => {
-        if ($(textClass).css('display') == 'block') {
-            $(labelClass).text("キャンセル");
-            $(textClass).collapse('hide');
-            $(inputClass).collapse('show');
-        } else {
-            $(labelClass).text("編集");
-            $(textClass).collapse('show');
-            $(inputClass).collapse('hide');
-        }
-    }
-</script>

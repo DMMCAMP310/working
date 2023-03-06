@@ -61,3 +61,4 @@ gem "enum_help"
 gem 'socialization'
 gem 'kaminari'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :tag => 'v2.19.0'
+gem 'acts_as_shopping_cart'
