@@ -56,8 +56,10 @@
       <div class="row">
         <% @reviews.each do |review| %>
         <div class="offset-md-5 col-md-5">
+          <h3 class="review-score-color"><%= score_on_star(review.score) %></h3>
           <p class="h3"><%= review.content %></p>
-          <label><%= review.created_at %></label>
+          <h4><%= review.user.name %></h4>
+          <label><%= l review.created_at %></label>
         </div>
         <% end %>
       </div>
@@ -66,6 +68,9 @@
         <div class="row">
           <div class="offset-md-5 col-md-5">
             <%= form_with model: @review, url: product_reviews_path(@product) do |f| %>
+              <h4>評価</h4>
+              <%= f.select :score, @star_repeat_select, {}, class: "form-control m-2 review-score-color" %>
+              <h4>レビュー内容</h4>
               <%= f.text_area :content, class: "form-control m-2" %>
               <%= f.submit "レビューを追加" , class:"btn samuraimart-submit-button ml-2"%>
             <% end %>
