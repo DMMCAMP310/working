@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= ENV["APP_NAME"] %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/8aeca36c69.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <%= render partial: 'layouts/dashboard/header' %>
+    <div class="row">
+      <div class="col-3 mt-3">
+         <%= render partial: 'layouts/dashboard/sidebar' %>
+       </div>
+      <div class="col">
+        <main class="py-4 mb-5">
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

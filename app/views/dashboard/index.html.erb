@@ -1,0 +1,63 @@
+<h1>商品管理</h1>
+<%= form_with url: dashboard_products_path, method: :get, local: true, class: "form-inline" do |f| %>
+    並び替え
+  <% if @sorted.present? %>
+    <%= f.select :sort, @sort_list, { selected: @sorted }, { onChange: "javascript: this.form.submit();", class: "form-inline ml-2 form-control" } %>
+  <% else %>
+    <%#= f.select :sort, @sort_list, {}, { onChange: "javascript: this.form.submit();", class: "form-inline ml-2 form-control" } %>
+  <% end %>
+<% end %>
+<div class="w-75 mt-2">
+  <div class="w-75">
+    <%= form_with url: dashboard_products_path, method: :get, local: true do |f| %>
+      <div class="d-flex flex-inline form-group">
+        <div class="d-flex align-items-center">
+          商品ID・商品名
+        </div>
+        <%= f.text_area :keyword, class: "form-control ml-2 w-50" %>
+      </div>
+      <%= f.submit "検索", class: "btn samuraimart-submit-button" %>
+    <% end %>
+  </div>
+
+  <div class="d-flex justify-content-between w-75 mt-4">
+    <h3>合計<%= @total_count %>件</h3>
+
+    <%= link_to "+ 新規作成", new_dashboard_product_path, class: "btn samuraimart-submit-button" %>
+  </div>
+  <table class="table table-responsive mt-5">
+
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">画像</th>
+        <th scope="col">商品名</th>
+        <th scope="col">価格</th>
+        <th scope="col">カテゴリ名</th>
+        <th scope="col">親カテゴリ名</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%# @products.each do |product| %>
+      <tr>
+        <th scope="row"><%#= product.id %></td>
+        <td><%= image_tag "/images/dummy.png", class: "img-fluid h-10" %></td>
+        <td><%#= product.name %></td>
+        <td><%#= product.price %></td>
+        <td><%#= product.category.name %></td>
+        <td><%#= product.category.major_category_name %></td>
+        <td>
+          <%#= link_to "編集", edit_dashboard_product_path(product), class: "dashboard-edit-link" %>
+        </td>
+        <td>
+          <%#= link_to "削除", dashboard_product_path(product), method: :delete, class: "dashboard-delete-link" %>
+        </td>                  
+      </tr>
+      <%# end %>
+    </tbody>
+  </table>
+
+  <%#= paginate @products %>
+</div>

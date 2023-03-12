@@ -1,0 +1,23 @@
+<div class="w-50">
+  <h1>カテゴリ情報更新</h1>
+
+  <%= form_with model: @category, url: dashboard_category_path(@category), local: true do |f| %>
+    <div class="form-inline mt-4 mb-4 row">
+      <%= f.label :name, "カテゴリ名", class: "col-2 d-flex justify-content-start" %>
+      <%= f.text_field :name, class: "form-control col-8" %>
+    </div>
+
+    <div class="form-inline mt-4 mb-4 row">
+      <%= f.label :description, "カテゴリの説明", class: "col-2 d-flex justify-content-start" %>
+      <%= f.text_field :description, class: "form-control col-8" %>
+    </div>
+
+    <div class="form-inline mt-4 mb-4 row">
+      <%= f.label :major_category_name, "カテゴリ", class: "col-2 d-flex justify-content-start" %>
+      <%= f.text_field :major_category_name, class: "form-control col-8" %>
+    </div>
+
+    <%= f.submit "更新", class: "w-25 btn samuraimart-submit-button" %>
+  <% end %>
+  <div class="mt-4"><%= link_to "カテゴリ一覧に戻る", dashboard_categories_path %></div>
+</div>
